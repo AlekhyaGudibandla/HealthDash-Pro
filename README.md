@@ -1,63 +1,104 @@
-# Healthcare SaaS Dashboard
+# HealthDash Pro 🏥
 
-A production-grade B2B Healthcare SaaS frontend application focusing on scalability, maintainability, and real-world architecture.
+**HealthDash Pro** is a production-grade, B2B Healthcare SaaS dashboard built with React, TypeScript, and Firebase. It provides medical practitioners with a high-performance, real-time interface for managing patient records, monitoring clinical analytics, and receiving critical medical alerts.
 
-## Tech Stack
-- **React (Vite)**: Fast build tool and development server.
-- **TypeScript**: Strict type-checking enabled.
-- **Zustand**: Lightweight global state management for UI and Auth.
-- **Tailwind CSS**: Utility-first CSS framework with custom healthcare theme.
-- **React Router v6**: Client-side form routing and nested layouts.
-- **Firebase Auth**: Authentication service for email/password.
-- **Recharts**: Data visualization for Analytics.
-- **Lucide React**: Clean, consistent icon set.
-- **React Hook Form + Zod**: Performant form validation.
+---
 
-## Architecture
+## 🚀 Key Features
 
-This project strictly follows feature-based (`src/features/*`) architecture to ensure components remain decoupled and micro-frontend ready. 
+- **🔐 Real-time Authentication**: Secure Firebase-backed login/signup with session persistence.
+- **📁 Patient Management**: Comprehensive patient directory with:
+  - Advanced **Sorting** (by name, age, status, last visit).
+  - **Pagination** for large datasets.
+  - **Optimistic UI Updates** for status changes (Stable, Critical, etc.).
+  - Search by Name, ID, or Medical Condition.
+- **📊 Rich Analytics**: 30-day interactive charts showing patient intake trends, department load, and system health.
+- **🔔 Notification Engine**:
+  - **In-app Bell Dropdown**: Track history of patient registrations and alerts.
+  - **Sonner Toasts**: Real-time feedback for all CRUD operations.
+  - **Service Worker Push**: System-level notifications for critical updates.
+- **⚙️ Settings & Security**: Profile management, notification toggles, and secure password updates with strength validation.
+- **📱 Responsive UX**: Mobile-first design with auto-collapsing sidebar and touch-optimized data tables.
 
-### Folder Structure
-- `src/app/` - Global stores (Zustand) and top-level providers.
-- `src/features/` - Domain-driven functionality:
-  - `auth/` - Authentication logic, hooks, and forms.
-  - `dashboard/` - Layout logic (Header, Sidebar).
-- `src/pages/` - Route definitions tying features together.
-- `src/components/` - Highly reusable interface components (Buttons, Inputs, Cards).
-- `src/services/` - External API and Firebase configuration.
-- `src/utils/` - Utility functions (e.g. `cn` for Tailwind class merging).
+---
 
-## Setup & Running Locally
+## 🛠️ Tech Stack
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+- **Frontend**: [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Database/Auth**: [Firebase Firestore & Auth](https://firebase.google.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Notifications**: [Sonner](https://sonner.stevenly.me/)
 
-2. **Configure Firebase (Optional)**
-   The project is mocked for demonstration, but you can plug in real Firebase credentials by creating a `.env` file:
-   ```env
-   VITE_FIREBASE_API_KEY="your-api-key"
-   VITE_FIREBASE_AUTH_DOMAIN="your-domain.firebaseapp.com"
-   VITE_FIREBASE_PROJECT_ID="your-project-id"
-   VITE_FIREBASE_STORAGE_BUCKET="your-bucket.appspot.com"
-   VITE_FIREBASE_MESSAGING_SENDER_ID="your-sender-id"
-   VITE_FIREBASE_APP_ID="your-app-id"
-   ```
+---
 
-3. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
+## 🛠️ Local Setup
 
-## Key Considerations
+### 1. Clone the repository
+```bash
+git clone https://github.com/AlekhyaGudibandla/HealthDash-Pro.git
+cd HealthDash-Pro
+```
 
-- **Service Worker**: A basic Service Worker is implemented in `public/sw.js` for notifications. To see it in action, grant Notification permissions when loading the Dashboard.
-- **Lazy Loading**: Pages in `App.tsx` are lazy-loaded via `React.lazy()` to shrink initial bundle sizes.
-- **Error Boundaries**: A global top-level Error Boundary guarantees that crashes do not render a white page to the end user.
-- **Vercel Deployment**: A `vercel.json` file is included to configure Vite SPA routing out of the box. Simply import this repo into Vercel and set framework to Vite.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-## Test Credentials
-- **Email**: admin@demo.com
-- **Password**: password123 
-(Firebase auth is connected, but without valid config keys, it will drop to a mock error state or fail gracefully. For production, replace with your actual Firebase config to test live.)
+### 3. Environment Configuration
+Create a `.env.local` file in the root directory and add your Firebase credentials:
+```env
+VITE_FIREBASE_API_KEY="AIzaSy..."
+VITE_FIREBASE_AUTH_DOMAIN="healthcare-saas-..."
+VITE_FIREBASE_PROJECT_ID="healthcare-saas-..."
+VITE_FIREBASE_STORAGE_BUCKET="healthcare-saas-..."
+VITE_FIREBASE_MESSAGING_SENDER_ID="..."
+VITE_FIREBASE_APP_ID="..."
+VITE_FIREBASE_MEASUREMENT_ID="..."
+```
+
+### 4. Run the project
+```bash
+npm run dev
+```
+Open `http://localhost:5173` in your browser.
+
+---
+
+## 🚢 Deployment Guide
+
+### Deployment Option 1: Vercel (Recommended)
+1. **Connect to GitHub**: Import your repository into [Vercel](https://vercel.com).
+2. **Environment Variables**: Go to Project Settings > Environment Variables and add all the keys from your `.env.local` file.
+3. **Build Settings**: Vercel will automatically detect the Vite config.
+   - **Framework Preset**: Vite
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. **Deploy**: Click **Deploy**. Vercel handles the SPA routing automatically via the included `vercel.json`.
+
+### Deployment Option 2: Firebase Hosting
+1. Install Firebase CLI: `npm install -g firebase-tools`
+2. Login: `firebase login`
+3. Initialize: `firebase init hosting`
+   - Select your project.
+   - What do you want to use as your public directory? `dist`
+   - Configure as a single-page app? `Yes`
+4. Build: `npm run build`
+5. Deploy: `firebase deploy`
+
+---
+
+## 📝 Credentials for Testing
+If you are using the default demo environment:
+- **Email**: `admin@demo.com`
+- **Password**: `password123`
+
+*(Note: Data is served in real-time from Firestore. If you are starting fresh, use the "Load Demo Data" button in the Patients tab to populate the dashboard.)*
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
