@@ -7,13 +7,6 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { getPatients, Patient } from '@/services/patientService';
 import { useNotificationStore } from '@/app/store/notificationStore';
 
-const statusColors: Record<string, string> = {
-  'Stable': 'bg-green-100 text-green-800',
-  'Critical': 'bg-red-100 text-red-800',
-  'Under Observation': 'bg-amber-100 text-amber-800',
-  'Discharged': 'bg-gray-100 text-gray-800',
-};
-
 const appointments = [
   { name: 'Dr. Smith - Cardiology Follow-up', patient: 'James Brown', time: '10:00 AM', type: 'Follow-up' },
   { name: 'Dr. Patel - Lab Review', patient: 'Mary Johnson', time: '11:30 AM', type: 'Lab Review' },
