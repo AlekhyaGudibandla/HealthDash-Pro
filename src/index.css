@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html, body {
+    @apply h-full antialiased bg-healthcare-background text-slate-900;
+  }
+}
