@@ -51,13 +51,12 @@ npm install
 ### 3. Environment Configuration
 Create a `.env.local` file in the root directory and add your Firebase credentials:
 ```env
-VITE_FIREBASE_API_KEY="AIzaSy..."
-VITE_FIREBASE_AUTH_DOMAIN="healthcare-saas-..."
-VITE_FIREBASE_PROJECT_ID="healthcare-saas-..."
-VITE_FIREBASE_STORAGE_BUCKET="healthcare-saas-..."
-VITE_FIREBASE_MESSAGING_SENDER_ID="..."
-VITE_FIREBASE_APP_ID="..."
-VITE_FIREBASE_MEASUREMENT_ID="..."
+VITE_FIREBASE_API_KEY=""
+VITE_FIREBASE_AUTH_DOMAIN=""
+VITE_FIREBASE_PROJECT_ID=""
+VITE_FIREBASE_STORAGE_BUCKET=""
+VITE_FIREBASE_MESSAGING_SENDER_ID=""
+VITE_FIREBASE_APP_ID=""
 ```
 
 ### 4. Run the project
@@ -68,37 +67,6 @@ Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🚢 Deployment Guide
-
-### Deployment Option 1: Vercel (Recommended)
-1. **Connect to GitHub**: Import your repository into [Vercel](https://vercel.com).
-2. **Environment Variables**: Go to Project Settings > Environment Variables and add all the keys from your `.env.local` file.
-3. **Build Settings**: Vercel will automatically detect the Vite config.
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. **Deploy**: Click **Deploy**. Vercel handles the SPA routing automatically via the included `vercel.json`.
-
-### Deployment Option 2: Firebase Hosting
-1. Install Firebase CLI: `npm install -g firebase-tools`
-2. Login: `firebase login`
-3. Initialize: `firebase init hosting`
-   - Select your project.
-   - What do you want to use as your public directory? `dist`
-   - Configure as a single-page app? `Yes`
-4. Build: `npm run build`
-5. Deploy: `firebase deploy`
-
----
-
-## 📝 Credentials for Testing
-If you are using the default demo environment:
-- **Email**: `admin@demo.com`
-- **Password**: `password123`
-
-*(Note: Data is served in real-time from Firestore. If you are starting fresh, use the "Load Demo Data" button in the Patients tab to populate the dashboard.)*
-
----
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
